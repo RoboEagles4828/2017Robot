@@ -1,5 +1,8 @@
-# How to Contribute to Github (unfinished)
+# How to Contribute to this repository (unfinished)
 
-1. Step one
-  * Make sure to follow step one.
-2. Repeat first step.
+## Guidelines
+
+This year, we are using **git flow**, a development model to make our repository all neat and pretty!
+The main idea is to use separate branches for development and for features. The full blog post can be found [here](blogpost).
+
+[blogpost]: http://nvie.com/posts/a-successful-git-branching-model/
