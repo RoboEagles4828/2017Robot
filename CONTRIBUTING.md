@@ -202,11 +202,12 @@ That's it! You're now all set to mess with the code!
 
 These practices are good for everything. Use them!
 
-- Try to use an insightful title
+- Try to use an insightful title. Bonus points for including the specific error if you can figure it out, but keep things concise (one line).
+    - Great: "Null pointer exception in Toaster class when setting temperature" or "Out of memory error while saving custom temperature preset"
     - Good: "Problem with vision when running with toaster mode on" or "Pancake cooking functionality?"
     - Not good: "The robot broke" or "I want something to be added"
-- Include exactly what happened if the Issue is about a bug. Try to be as specific as possible.
-- Don't use Issues for random information. See [here][ripnikhil] for an example.
+- Include exactly what happened if the Issue is about a bug. Try to be as specific as possible, and document the exact steps that you followed to produce the issue. If you have logs, error codes, or dumps, you should include those inside code blocks in the Issues. A sequence of three backticks (`) indicate the start and end of code blocks.
+- Don't use Issues for random information, such as documentation. See [here][ripnikhil] for an example of what *not* to do.
 - When referencing other Commits, Pull Requests, or Issues, use it's `#` code. This can be found next to the name of the commit/issue/pull request. Example "Jackie, you totally broke the whole robot in #123"
 - When writing a title for anything, use the imperative form of the verb.
     - Good: "Fix Vision"
