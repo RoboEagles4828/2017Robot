@@ -19,6 +19,7 @@ dependencies {
     compile wpilib()
     compile talonSrx()
     compile group: 'junit', name: 'junit', version: '4.12'
+    compile fileTree(dir: "libs", include: "*.jar")
 }
 
 def robotManifest = {
@@ -37,4 +38,11 @@ task wrapper(type: Wrapper) {
 
 test {
     testLogging.showStandardStreams = true
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
 }

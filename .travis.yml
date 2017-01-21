@@ -7,6 +7,8 @@ addons:
     packages:
       - libstdc++6
       - junit4
+  code_climate:
+          repo_token: 3196bfa644b36e30bf8c3d41c51d36d7eb39fc0d54739268ffc677170d1b26d0
 before_install:
   - chmod +x gradlew
 script:
