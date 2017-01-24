@@ -13,6 +13,10 @@ public class DriveTrain {
         backRight = new CANTalon(backRightPort);
     }
 
+    public int[] getPorts() {
+        return new int[]{frontLeft.getDeviceID(), frontRight.getDeviceID(), backLeft.getDeviceID(), backRight.getDeviceID()};
+    }
+
     private static void normalize(double[] wheelSpeeds) {
         double maxMagnitude = Math.abs(wheelSpeeds[0]);
         for (int i = 1; i < 4; i++) {
@@ -36,6 +40,7 @@ public class DriveTrain {
      * @param angle Angle by which to rotate the vector
      * @return The resultant vector as a double[2]
      */
+
     public static double[] rotateVector(double x, double y, double angle) {
         double cosA = Math.cos(angle * (3.14159 / 180.0));
         double sinA = Math.sin(angle * (3.14159 / 180.0));
