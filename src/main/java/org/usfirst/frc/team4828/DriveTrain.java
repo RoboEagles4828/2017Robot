@@ -49,6 +49,11 @@ public class DriveTrain {
      * Adjust motor speeds according to joystick input
      */
     public void mecanumDrive(double x, double y, double rotation) {
+        // Ignore tiny inadvertent joystick rotations
+        if (Math.abs(rotation) <= 0.15) {
+             rotation = 0.0;
+        }
+        
         // Negate y for the joystick.
         y = -y;
 
@@ -71,6 +76,11 @@ public class DriveTrain {
      * use input from the gyroscope to determine field orientation
      */
     public void mecanumDrive(double x, double y, double rotation, double gyroAngle) {
+        // Ignore tiny inadvertent joystick rotations
+        if (Math.abs(rotation) <= 0.15) {
+             rotation = 0.0;
+        }
+        
         // Negate y for the joystick.
         y = -y;
         // Compensate for gyro angle.
