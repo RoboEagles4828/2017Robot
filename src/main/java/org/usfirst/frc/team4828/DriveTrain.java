@@ -5,6 +5,7 @@ import com.ctre.CANTalon;
 
 public class DriveTrain {
     private CANTalon frontLeft, frontRight, backLeft, backRight;
+    private static final double TWIST_THRESHOLD = 0.15;
 
     DriveTrain(int frontLeftPort, int backLeftPort, int frontRightPort, int backRightPort) {
         frontLeft = new CANTalon(frontLeftPort);
@@ -49,6 +50,11 @@ public class DriveTrain {
      * Adjust motor speeds according to joystick input
      */
     public void mecanumDrive(double x, double y, double rotation) {
+        // Ignore tiny inadvertent joystick rotations
+        if (Math.abs(rotation) <= TWIST_THRESHOLD) {
+             rotation = 0.0;
+        }
+        
         // Negate y for the joystick.
         y = -y;
 
@@ -71,6 +77,11 @@ public class DriveTrain {
      * use input from the gyroscope to determine field orientation
      */
     public void mecanumDrive(double x, double y, double rotation, double gyroAngle) {
+        // Ignore tiny inadvertent joystick rotations
+        if (Math.abs(rotation) <= TWIST_THRESHOLD) {
+             rotation = 0.0;
+        }
+        
         // Negate y for the joystick.
         y = -y;
         // Compensate for gyro angle.
