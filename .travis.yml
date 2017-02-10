@@ -1,24 +1,20 @@
 language: java
-# Make NetworkTables happy
 addons:
   apt:
     sources:
-      - ubuntu-toolchain-r-test
+    - ubuntu-toolchain-r-test
     packages:
-      - libstdc++6
-      - junit4
+    - libstdc++6
+    - junit4
   code_climate:
-          repo_token: 3196bfa644b36e30bf8c3d41c51d36d7eb39fc0d54739268ffc677170d1b26d0
+    repo_token: 3196bfa644b36e30bf8c3d41c51d36d7eb39fc0d54739268ffc677170d1b26d0
 before_install:
-  - chmod +x gradlew
+- chmod +x gradlew
 script:
-  - ./gradlew $TEST_SUITE
-  
-# For CodeCov
+- "./gradlew $TEST_SUITE"
 after_success:
-  - ./gradlew test jacocoTestReport
-  - bash <(curl -s https://codecov.io/bash)
-
+- "./gradlew test jacocoTestReport"
+- bash <(curl -s https://codecov.io/bash)
 jdk:
 - oraclejdk8
 notifications:
@@ -30,5 +26,13 @@ cards:
   - development
   title: Toast
 env:
-  - TEST_SUITE=build
-  - TEST_SUITE=check
+- TEST_SUITE=build
+- TEST_SUITE=check
+deploy:
+  provider: releases
+  api_key:
+    secure: kXjiaSWyoYByqq+deBth39twmJJZGTK29XXoVfthOPJ4KfXjTgCUht6juetCjkWokBgrFYYCjqNFykYqbxYmbSrTTgzvmQLpyXEekH7Q2WSdFJsRvYLLb9CmoWlsneWFlJeZ1a8Ym1pAlCEhOl14v3kjR4DpHBgg81QczpCpIXEYMXFk7NHOsbNezmEqv3ULnlbkt5lu3vb9sajR1TR4MuPp2WrfEu1HrIoX6qLLpOHqHi3vtk9yf6SHgT07LaXdEYt8xJrl4YucVKUsl+YqVJyhFA+ym5dPsHIrR1LKm2jdgGzVHFITyJ17S1jBJeMES6szUTQGkoYemUK0pYmqn+S0i1dDQvEAgPlyXAx0uq6RzC9WlFQ35v9/qBoSs9JARl9XyX9CrjAx1Rf+Yfd7jovl84p8jwl8fHeNiMN1OvWlH7UvJJu82y7qJLED10iworT4ZH1vvua/wWt5JfOrLbF0Iql6lvu+bIHdgeU8qBnb4CEClrSiPLXsT9pvPDi5N+xN3dlw6bkwtLKgsCSEY664+3X5i97TVIWfeIwZDl8S5i2kt276600Cht1pAQ6Qr1TZ6brst20lO5Xlnay/I9Xbz1jUK6KWybHI/eQ9c/y7rHH4hVccg8JBpy/nLpu0/LJ9OyOlqRSmk8Wi3vE15AZ0+Kx2d/IistwQ9/My1hM=
+  file: ''
+  on:
+    repo: RoboEagles4828/2017Robot
+    branch: master
