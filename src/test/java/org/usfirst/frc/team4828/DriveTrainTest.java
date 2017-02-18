@@ -4,17 +4,19 @@ import java.util.Random;
 import org.junit.Assert;
 import org.junit.Test;
 
-/** Testing class dedicated to the DriveTrain Class.
+/**
+ * Testing class dedicated to the DriveTrain Class.
  *
  * @see DriveTrain
  */
 public class DriveTrainTest {
-    private static final int TEST_CASES = 420420;
+    private static final int TEST_CASES = 420;
 
-    /** Tests the Normalization function in DriveTrain Class
-     *  Test an array of 4 random numbers multiple times. Should be less than 1.
+    /**
+     * Tests the Normalization function in DriveTrain Class
+     * Test an array of 4 random numbers multiple times. Should be less than 1.
      *
-     *  @see DriveTrain
+     * @see DriveTrain
      */
     @Test
     public void testNormalize() {
