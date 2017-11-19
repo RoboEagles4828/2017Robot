@@ -19,7 +19,7 @@ frc {
 
 dependencies {
     compile wpilib()
-    compile talonSrx()
+    compile ctre()
     compile navx()
 
     compile group: 'junit', name: 'junit', version: '4.12'
