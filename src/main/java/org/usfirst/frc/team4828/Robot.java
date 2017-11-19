@@ -167,7 +167,9 @@ public class Robot extends IterativeRobot {
         //CLIMBER
         if (driveStick.getRawButton(8) || secondaryStick.getRawButton(8)) {
             climb.printDebug();
-            climb.raise();
+            if(!climb.isRaised()) {
+            	climb.raise();
+            }
         } else if (driveStick.getRawButton(9)) {
             climb.reset();
         } else if (secondaryStick.getRawButton(12)) {

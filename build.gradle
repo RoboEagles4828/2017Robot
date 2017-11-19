@@ -2,25 +2,36 @@ plugins {
     id "java"
     id "eclipse"
     id "idea"
-    id "jaci.openrio.gradle.GradleRIO" version "2017.2.3"
+    id "jaci.openrio.gradle.GradleRIO" version "2017.11.17"
     id "jacoco"
     id "pmd"
     id "findbugs"
 }
 
+def TEAM = 4828
+def ROBOT_CLASS = "frc.team4828.robot.Robot"
+
 repositories {
     mavenCentral()
 }
 
-frc {
-    team = "4828"
-    robotClass = "org.usfirst.frc.team4828.Robot"
+deploy {
+    targets {
+        target("roborio", jaci.openrio.gradle.frc.RoboRIO) {
+            team = 4828
+        }
+    }
+    artifacts {
+        artifact('frcJava', jaci.openrio.gradle.frc.FRCJavaArtifact) {
+            targets << "roborio"
+        }
+    }
 }
 
 dependencies {
     compile wpilib()
-    compile talonSrx()
     compile navx()
+    compile ctre()
 
     compile group: 'junit', name: 'junit', version: '4.12'
     compile fileTree(dir: "libs", include: "*.jar")
@@ -34,11 +45,11 @@ def robotManifest = {
 
 jar {
     from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
-    manifest robotManifest
+    manifest jaci.openrio.gradle.GradleRIOPlugin.javaManifest("frc.team4828.robot.Robot")
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.1'
+    gradleVersion = '4.2.1'
 }
 
 test {

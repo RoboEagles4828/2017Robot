@@ -2,12 +2,16 @@ package org.usfirst.frc.team4828;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.hal.PDPJNI;
 
 public class Climber {
 
     private Victor climberMotor1;
     private Victor climberMotor2;
     private DigitalInput hallEffect;
+    private static final int MAX_CURRENT = 35;
+    private static final int MODULE_1 = 0;
+    private static final int MODULE_2 = 13;
     private static final double MOTOR_SPEED = 0.8;
     private static final double RESET_SPEED = 0.2;
 
@@ -21,6 +25,11 @@ public class Climber {
         climberMotor1 = new Victor(motorPort1);
         climberMotor2 = new Victor(motorPort2);
         hallEffect = new DigitalInput(halleffectPort);
+        
+    }
+    
+    public boolean isRaised() {
+    	return PDPJNI.getPDPTotalCurrent(MODULE_1) > MAX_CURRENT || PDPJNI.getPDPTotalCurrent(MODULE_2) > MAX_CURRENT;
     }
 
     /**
